@@ -1,0 +1,27 @@
+Description: Create a VPC, Internet Gateway, Subnets, Route Tables and Security Groups
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  CRDBInstance1:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      KeyName: us-west-2-kp-02
+      Tags:
+      - Key: Name
+        Value: CRDB-instance-1
+      InstanceType: t2.micro
+      ImageId: ami-00f7e5c52c0f43726
+      UserData:
+        Fn::Base64:
+          !Sub |
+            #!/bin/bash -xe
+            echo "export ip_local=`curl http://169.254.169.254/latest/meta-data/local-ipv4`" >> /home/ec2-user/.bashrc
+      NetworkInterfaces:
+        - GroupSet:
+            - !ImportValue 
+              'Fn::Sub': 'MyTestStack02-SecuirtyGroup1'
+            - !ImportValue
+              'Fn::Sub': 'MyTestStack02-SecuirtyGroup2'
+          AssociatePublicIpAddress: 'true'
+          DeviceIndex: '0'
+          DeleteOnTermination: 'true'
+          SubnetId: !ImportValue "MyTestStack02-PublicSubnet1"
