@@ -12,6 +12,8 @@ This CloudFormation (CF) Template expects that the cf-vpic template has been pre
 6.  create the join on the last instance
 7.  have the system start the cluster
 
+Create an AMI with CA cert and database installed
+Create an AMI with JMETER worker installed
 
 [Outputs](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html)<br>
 [Paraneters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html)<br>
