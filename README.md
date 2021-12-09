@@ -5,7 +5,7 @@ This CloudFormation (CF) Template expects that the cf-vpic template has been pre
 
 # TODO
 1.  create an additional user
-2.  create a cert - what am I going to do for other regions?  Can I export and have user copy the export as a parameter?  Certificate Manager!!
+2.  create a cert - what am I going to do for other regions?  Can I export and have user copy the export as a parameter?  KMS
 3.  copy the cert to all following clusters via new user
 4.  create node certs
 5.  additional copy
